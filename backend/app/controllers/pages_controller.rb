@@ -1,4 +1,4 @@
-class PagesController < ApplicationController
+class StudentsController < ApplicationController
   include ApplicationHelper
 
   # returns all pages that are currently not deleted

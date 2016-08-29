@@ -1,3 +1,3 @@
-class PagesSerializer < ActiveModel::Serializer
-  attributes :id, :name, :settings, :layout, :is_deleted
+class StudentsSerializer < ActiveModel::Serializer
+  attributes :id, :name
 end
