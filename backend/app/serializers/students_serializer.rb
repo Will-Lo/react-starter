@@ -1,3 +1,3 @@
 class StudentsSerializer < ActiveModel::Serializer
-  attributes :id, :name
+  attributes :id, :name, :is_deleted
 end

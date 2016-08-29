@@ -1,57 +1,52 @@
 class StudentsController < ApplicationController
   include ApplicationHelper
 
-  # returns all pages that are currently not deleted
+  # returns all students that are currently not deleted
 	def get
-		page = Page.where(is_deleted: false).index_by(&:name)
-		if !page.empty?
-			return response_data('Found all pages.', page, 200)
+		student = Student.where(is_deleted: false).index_by(&:id)
+		if !student.empty?
+			return response_data('Found all students.', student, 200)
 		else
-			return response_data('There are no pages.', nil, 400)
+			return response_data('There are no students.', nil, 400)
 		end
 	end
 
-	# creates a new page, along a page role
+	# creates a new student, along a student role
 	def create
-		page = Page.new(create_params)
-		if page.save
-			PageRole.create(role_id: @user[0][:id], page_id: page[:id])
-			return response_data('Created new page.', page, 200)
+		student = Student.new(create_params)
+		if student.save
+			return response_data('Created new student.', student, 200)
 		else
-			return response_data('Could not create page.', page.errors.messages, 400)
+			return response_data('Could not create student.', student.errors.messages, 400)
 		end
 	end
 
-	# edits selected page based on ID
+	# edits selected student based on ID
 	def edit
-		if Page.exists?(edit_params[:id])
-			page = Page.find(edit_params[:id])
-			if page.update(edit_params)
-	      return response_data('Editted page.', page, 200)
-			else # failed to edit the page (wrong parameters passed)
-	    	return response_data('Failed to edit page.', page.errors.messages, 400)
+		if Student.exists?(edit_params[:id])
+			student = Student.find(edit_params[:id])
+			if student.update(edit_params)
+	      return response_data('Editted student.', student, 200)
+			else # failed to edit the student (wrong parameters passed)
+	    	return response_data('Failed to edit student.', student.errors.messages, 400)
 			end
-		else # ID does not exist, therefore page does not exist
-			return response_data('Page does not exist.', nil, 400)
+		else # ID does not exist, therefore student does not exist
+			return response_data('Student does not exist.', nil, 400)
 		end
 	end
 
-  # removes a page from the database by updating the is_deleted column to true
-  # this function will also remove all page roles related to this page
+  # removes a student from the database by updating the is_deleted column to true
+  # this function will also remove all student roles related to this student
 	def remove
-		if Page.exists?(remove_params[:id])
-			page = Page.find(remove_params[:id])
-			if page.update_attribute(:is_deleted, 1)
-      	page_role = PageRole.where(id: page[:id])
-      	page_role.each do |role|
-      		role.update_attribute(:is_deleted, 1)
-      	end
-				return response_data('Removed page.', page, 200)
-			else # failed to remove the page
-				return response_data('Failed to remove page.', page.errors.messages, 400)
+		if Student.exists?(remove_params[:id])
+			student = Student.find(remove_params[:id])
+			if student.update_attribute(:is_deleted, 1)
+				return response_data('Removed student.', student, 200)
+			else # failed to remove the student
+				return response_data('Failed to remove student.', student.errors.messages, 400)
 			end
-		else # ID does not exist, therefore page does not exist
-			return response_data('Page does not exist.', nil, 400)
+		else # ID does not exist, therefore student does not exist
+			return response_data('Student does not exist.', nil, 400)
 		end
 	end
 
