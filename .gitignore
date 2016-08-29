@@ -1,2 +1,8 @@
 bundle.*
 node_modules
+
+*.log
+
+*.pid
+
+backend/log/development.log
