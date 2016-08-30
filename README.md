@@ -1,15 +1,4 @@
-# GoGoGo Web Client
+This repository is a basic React boilerplate.
+Uses Babel for jsx transpiling and for es6, Redux, Sass for styling, and hot-reloading
 
-The front-end interface for GoGoGo, powered by React.js
-
-<code> npm install </code>, then  <code> npm start </code>
-
-| Dependency | Use |
-| ----------- | ---- |
-| bootstrap-sass | CSS framework |
-| react | React library |
-| react-dom | React library for DOM rendering |
-| react-redux | Redux library for connecting React components with Redux |
-| redux | Unidirectional Data Flow Library |
-| redux-thunk | Helps with asynchronous Redux actions |
-# react-starter
+Mainly used to ensure that future projects won't take me forever to set up anymore :(
