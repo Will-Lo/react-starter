@@ -1,3 +1,4 @@
+const webpack = require('webpack');
 const path = require('path');
 
 module.exports = {
@@ -17,22 +18,18 @@ module.exports = {
         loaders: ['react-hot-loader', 'babel-loader'],
         include: path.join(__dirname, 'src')
       },
-      {
-        test: /\.(png|jpg|jpeg|gif)$/,
-        loader: 'url?limit=10000'
-      },
-      {
+      { 
         test: /\.css$/,
-        loader: 'style-loader!css-loader'
+        loader: "style-loader!css-loader"
       },
-      {
-        test: /\.scss$/,
+      { 
+        test: /\.scss$/, 
         loader: 'style!css!sass!'
       },
       {
-        test: /\.woff2?$|\.ttf$|\.eot$|\.svg$/,
+        test: /\.(png|jpg|jpeg|gif)$|\.woff2?$|\.ttf$|\.eot$|\.svg$/,
         loader: 'file'
-      }
+      },
     ]
   }
-};
+}
