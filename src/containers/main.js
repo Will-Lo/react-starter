@@ -10,12 +10,12 @@ import App from '../components/App';
 
 const store = createStore(rootReducer, {}, compose(
   applyMiddleware(thunk),
-  window.devToolsExtension ? window.devToolsExtension() : f => f
+  window.devToolsExtension ? window.devToolsExtension() : f => f,
 ));
 
 
 ReactDOM.render(
-    <Provider store={store}>
-        <App />
-    </Provider>, document.getElementById("App")
+  <Provider store={store}>
+    <App />
+  </Provider>, document.getElementById('App'),
 );

@@ -3,6 +3,6 @@ import TestStore from './TestReducer';
 
 export default combineReducers(
   Object.assign({}, {
-  	TestStore
-  })
+  	TestStore,
+  }),
 );
